@@ -1,0 +1,1 @@
+All of these talks are public domain.  Please fork them and re-write, re-mix, re-invent, and otherwise improve them.  Feel free to use any or all of them in your own work.  I'm happy to take pull requests for any of these.  

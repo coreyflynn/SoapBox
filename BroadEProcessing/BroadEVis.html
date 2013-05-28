@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Processing BroadE tutorial</title>
+    
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<!--
+    fallback message in case impress features are not supported
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!-- all slides are child divs under this top level div -->
+<div id="impress">
+	<!-- splash screen -->
+	<div class="step" data-x="-1000" data-y="-500">
+        <p> We're going to learn some <a href="http://www.processing.org/">Processing</a></p>
+        <p style="height: 100px">  </p>
+        <p style="width:1000; font-size:30px; text-align:center"> follow these slides at <a href="http://www.broadinstitute.org/~cflynn/BroadEProcessing">http://www.broadinstitute.org/~cflynn/BroadEProcessing</a></p>
+    </div>
+
+    <!-- get processing -->
+    <div class="step" data-x="0" data-y="-500">
+        <p>Install <a href="http://www.processing.org/">Processing</a></p>
+        <iframe width="750px" height="400" src="http://www.processing.org/"></iframe>
+    </div>
+
+    <!-- what we are we trying to solve? -->
+    <div class="step" data-x="1000" data-y="-500">
+        <p>What Problem are we trying to solve?</p>
+        <img src="img/matrix.png">
+    </div>
+
+    <div class="step" data-x="-1000" data-y="-1500">
+    	<p>The CMap analytics rely on a modified KS statistics to score signatures as <font color="blue"><b>negatively connected (-1 to 0)</b></font>, <font color="gray"><b>null (0)</b></font> or <font color="red"><b>positively connected (0 – 1)</b></font> to a reference.</p> 
+	</div>
+
+	<div class="step" data-x="0" data-y="-1500">
+		<img src="img/CMapBar.png">
+	</div>
+
+    <div class="step" data-x="1000" data-y="-1500">
+        <p>It would be useful to know the total number of signatures displayed and the proportion of <font color="blue"><b>negative</b></font>, <font color="gray"><b>null</b></font>, and <font color="red"><b>positive</b></font> connections.</p>
+    </div>
+
+
+
+    <!-- what we are going to build -->
+    <div class="step" data-x="2500" data-y="-1500" data-z="-1000" data-scale="1">
+        <p>Vis Prototypes</p>
+        <img src="img/white_board.png">
+        <img src="img/hive_concepts.png">
+    </div>
+
+    <!-- full image -->
+    <div class="step" data-x="2500" data-y="500" data-scale="3" data-rotate="45">
+        <img src="img/hive_single.png">
+    </div>
+
+    <!-- circle building blocks -->
+    <div class="step" data-x="1000" data-y="1500" data-z="-1000" data-scale=".5" data-rotate="45">
+    	<p>Circle Primitives</p>
+    	<img src="img/circle.png">
+    </div>
+    <div class="step" data-x="1000" data-y="1500" data-scale="1" data-rotate="45">
+        <img src="img/hive_single_circle_outline.png">
+    </div>
+
+    <!-- line building blocks -->
+    <div class="step" data-x="2500" data-y="1200" data-z="-1000" data-scale=".5" data-rotate="45">
+    	<p>line Primitives</p>
+    	<img src="img/line.png">
+    </div>
+    <div class="step" data-x="2500" data-y="1500" data-scale="1" data-rotate="45">
+        <img src="img/hive_single_line_outline.png">
+    </div>
+
+    <!-- together -->
+    <div class="step" data-x="3800" data-y="-50" data-scale="1" data-rotate="45">
+        <p>Mash them up to build the plot</p>
+        <img src="img/hive_single_outline.png">
+    </div>
+
+    <!-- reminder of th image to build -->
+    <div class="step" data-x="2500" data-y="500" data-scale="3" data-rotate="45">
+        <img src="img/hive_single.png">
+    </div>
+
+	<!-- how do we build a circle in processing -->
+	<div class="step" data-x="300" data-y="2500" data-scale="4" data-rotate="90">
+		<p style="font-size: 100px">ellipse(50,50,50,50);</p>
+	</div>
+
+	<div class="step" data-x="300" data-y="650" data-scale=".5" data-rotate="90">
+		<iframe width="750px" height="800" src="http://processing.org/reference/ellipse_.html"></iframe>
+	</div>
+
+	<!-- how do we draw a line in processing -->
+	<div class="step" data-x="2650" data-y="3850" data-scale="4" data-rotate="90">
+		<p style="font-size: 100px">line(0,0,50,50);</p>
+	</div>
+
+	<div class="step" data-x="2650" data-y="2000" data-scale=".5" data-rotate="90">
+		<iframe width="750px" height="800" src="http://processing.org/reference/line_.html"></iframe>
+	</div>
+
+	<!-- other usefull processing commands -->
+	<div class="step" data-x="3500" data-y="-2200" data-z="-1000" data-scale=".5">
+		<p style="font-size: 100px">size(x,y)</p>
+		<iframe width="750px" height="600" src="http://processing.org/reference/size_.html"></iframe>
+	</div>
+
+	<div class="step" data-x="4000" data-y="-2200" data-z="-1000" data-scale=".5">
+		<p style="font-size: 100px">background(R,G,B);</p>
+		<iframe width="750px" height="600" src="http://processing.org/reference/background_.html"></iframe>
+	</div>
+
+	<div class="step" data-x="5100" data-y="0" data-z="-1000" data-scale=".5">
+		<p style="font-size: 100px">fill(R,G,B);</p>
+		<iframe width="750px" height="600" src="http://processing.org/reference/fill_.html"></iframe>
+	</div>
+
+	<div class="step" data-x="4700" data-y="1000" data-z="-1000" data-scale=".5">
+		<p style="font-size: 100px">stroke(R,G,B);</p>
+		<iframe width="750px" height="600" src="http://processing.org/reference/stroke_.html"></iframe>
+	</div>
+
+	<div class="step" data-x="5200" data-y="1000" data-z="-1000" data-scale=".5">
+		<p style="font-size: 100px">strokeWeight(Size);</p>
+		<iframe width="750px" height="600" src="http://processing.org/reference/strokeWeight_.html"></iframe>
+	</div>
+
+	<div class="step" data-x="5700" data-y="1000" data-z="-1000" data-scale=".5">
+		<p style="font-size: 100px">noStroke();</p>
+		<iframe width="750px" height="600" src="http://processing.org/reference/noStroke_.html"></iframe>
+	</div>
+
+	<div class="step" data-x="-1000" data-y="-500">
+        <p> About Me</p>
+        <p style="height: 100px">  </p>
+        <p style="width:1000; text-align:center"> Corey Flynn</p>
+        <p style="width:1000; text-align:center"> Bioinformatics Scientist II</p>
+        <p style="width:1000; text-align:center"> Connectivity Map</p>
+        <p style="width:1000; text-align:center"> Golub Lab, Cancer Program</p>
+    </div>
+
+
+    <!-- show the full layout -->
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    </div>
+</div>
+
+</body>
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+</html>

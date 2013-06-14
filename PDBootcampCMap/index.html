@@ -121,6 +121,9 @@
     </div>
 
     <div class="step" data-x="1000" data-y="-0" data-scale="4">
+        <p>1. CMap Static Content</p>
+        <a href="http://lincscloud.org/" style="width:1000; text-align:center">http://lincscloud.org/</a>        
+
         <p>1. CMap Apps</p>
         <a href="http://apps.lincscloud.org/" style="width:1000; text-align:center">http://apps.lincscloud.org/</a>
 
@@ -135,34 +138,120 @@
 
     <!-- Key Questions -->
     <div class="step" data-x="9000" data-y="0" data-scale="4">
+        <p><font style="font-weight: bold; color: blue;">CMap Data Road Map</font></p>
         <ul>
             <li>1. Is it in CMap?</li>
-            <li>2. What Columns do I want?</li>
-            <li>3. Get the data!</li>
-            <li>4. Mine the data</li>
+            <a href="http://apps.lincscloud.org/data_synopsis" style="width:1000; text-align:center">http://apps.lincscloud.org/data_synopsis</a>
         </ul>
+    </div>
+
+    <!-- data synopsis exercise -->
+    <div class="step" data-x="7500" data-y="-1000"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Exercises</font></p>
+        <ul>
+            <li>1. How many cell lines has KD/OE of <b>X</b> been profiled in?</li>
+        </ul>
+    </div>
+
+    <!-- data synopsis exercise -->
+    <div class="step" data-x="8000" data-y="-1000"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Exercises</font></p>
+        <ul>
+            <li>2. How many chemicals have been profiled in cell line <b>X</b>? genetic reagents?</li>
+        </ul>
+    </div>
+
+    <!-- data synopsis exercise -->
+    <div class="step" data-x="8500" data-y="-1000"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Exercises</font></p>
+        <ul>
+            <li>3. How many <b>MYC</b> reagents do we have?<sup>*</sup></li>
+        </ul>
+        <span style="font-size:30px;" class="footnote"><sup>*</sup> use <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a></span>
     </div>
 
     <!-- Key Questions -->
     <div class="step" data-x="9000" data-y="4500" data-scale="4">
+        <p><font style="font-weight: bold; color: blue;">CMap Data Road Map</font></p>
         <ul>
             <li>2. What Columns do I want?</li>
             <a href="http://api.lincscloud.org/" style="width:1000; text-align:center">http://api.lincscloud.org/</a>
         </ul>
     </div>
 
+    <!-- api synopsis exercise -->
+    <div class="step" data-x="7500" data-y="3500"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Exercises</font></p>
+        <ul>
+            <li>1. How many profiles for <b>X</b>?</li>
+            <li>1a. What are the sig_ids?</li>
+            <li><button type="button" onclick="$('.api1_exercise_answer').animate({opacity:1},500)">show anaswer</button></li>
+            <li class="api1_exercise_answer" style="opacity:0"><a href='http://api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}&c=1' style="font-size:15px">http://api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}&c=1</a></li>
+            <li class="api1_exercise_answer" style="opacity:0"><a href='http://api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}&f={"sig_id":1}&l=1000' style="font-size:15px">http://api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}&f={"sig_id":1}&l=1000</a></li>
+        </ul>
+    </div>
+
+    <!-- api synopsis exercise -->
+    <div class="step" data-x="8000" data-y="3500"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Exercises</font></p>
+        <ul>
+            <li>2. How many chemicals have been profiled in cell line <b>X</b>? genetic reagents?</li>
+            <li>2a. What are the sig_ids?</li>
+            <li><button type="button" onclick="$('.api2_exercise_answer').animate({opacity:1},500)">show anaswer</button></li>
+            <li class="api2_exercise_answer" style="opacity:0"><a href='http://api.lincscloud.org/a2/siginfo?q={"pert_type":"trt_cp","cell_id":"PC3"}&c=1' style="font-size:15px">http://api.lincscloud.org/a2/siginfo?q={"pert_type":"trt_cp","cell_id":"PC3"}&c=1</a></li>
+            <li class="api2_exercise_answer" style="opacity:0"><a href='http://api.lincscloud.org/a2/siginfo?q={"pert_type":"trt_cp","cell_id":"PC3"}&f={"sig_id":1}&l=1000' style="font-size:15px">http://api.lincscloud.org/a2/siginfo?q={"pert_type":"trt_cp","cell_id":"PC3"}&f={"sig_id":1}&l=1000</a></li>
+        </ul>
+    </div>
+
+    <!-- api synopsis bonus -->
+    <div class="step" data-x="8500" data-y="3500"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Bonus API tricks</font></p>
+        <ul>
+            <li>1. How many distinct cell lines have been profiled?</li>
+            <li><button type="button" onclick="$('.api1_bonus_answer').animate({opacity:1},500)">show anaswer</button></li>
+            <li class="api1_bonus_answer" style="opacity:0"><a href="http://api.lincscloud.org/a2/siginfo?d=cell_id&c=1" style="font-size:15px">http://api.lincscloud.org/a2/siginfo?d=cell_id</a></li>
+            <li class="api1_bonus_answer" style="opacity:0"><a href="http://api.lincscloud.org/a2/siginfo?d=cell_id&c=1" style="font-size:15px">http://api.lincscloud.org/a2/siginfo?d=cell_id&c=1</a></li>
+        </ul>
+    </div>
+
+    <!-- api synopsis bonus -->
+    <div class="step" data-x="9000" data-y="3500"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Bonus API tricks</font></p>
+        <ul>
+            <li>2. What is the most frequent mutation in CMap cell lines?</li>
+            <li><button type="button" onclick="$('.api2_bonus_answer').animate({opacity:1},500)">show anaswer</button></li>
+            <li class="api2_bonus_answer" style="opacity:0"><a href="http://api.lincscloud.org/a2/cellinfo?g=mutations" style="font-size:15px">http://api.lincscloud.org/a2/cellinfo?g=mutations</a></li>
+        </ul>
+    </div>
+
+    <!-- api synopsis bonus -->
+    <div class="step" data-x="9500" data-y="3500"  data-z="-500" data-scale=".5">
+        <p><font style="font-weight: bold; color: red;">Bonus API tricks</font></p>
+        <ul>
+            <li>3. What is the most frequently up modulated gene? Down modulated?</li>
+            <li><button type="button" onclick="$('.api3_bonus_answer').animate({opacity:1},500)">show anaswer</button></li>
+            <li class="api3_bonus_answer" style="opacity:0"><a href="http://api.lincscloud.org/a2/siginfo?g=up50_lm" style="font-size:15px">http://api.lincscloud.org/a2/siginfo?g=up50_lm</a></li>
+            <li class="api3_answer" style="opacity:0"><a href='http://api.lincscloud.org/a2/geneinfo?q={"pr_id":"219952_s_at"}' style="font-size:15px">http://api.lincscloud.org/a2/geneinfo?q={"pr_id":"219952_s_at"}</a></li>
+        </ul>
+    </div>
+
     <!-- Key Questions -->
     <div class="step" data-x="4500" data-y="4500" data-scale="4">
+        <p><font style="font-weight: bold; color: blue;">CMap Data Road Map</font></p>
         <ul>
             <li>3. Get the data!</li>
+            <li>- <b>TBD/ Ask a CMapper</b><li>
         </ul>
     </div>
     
     <!-- Key Questions -->
     <div class="step" data-x="0" data-y="4500" data-scale="4">
+        <p><font style="font-weight: bold; color: blue;">CMap Data Road Map</font></p>
         <ul>
             <li>4. Mine the data!</li>
-            <b>TBD/ Ask a CMapper</b>
+            <li>- Use your GENE-E skills</li>
+            <li>- Use your R skills</li>
+            <li>- <b>TBD/ Ask a CMapper</b></li>
         </ul>
     </div>
     <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
@@ -245,6 +334,8 @@ if ("ontouchstart" in document.documentElement) {
     is used in event handlers.
     
 -->
+<!-- add jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
 </body>
 </html>

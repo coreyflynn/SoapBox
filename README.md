@@ -3,7 +3,7 @@ These are public domain talks.  Use them, fork them, whatever!  I'm open to you 
 
 # Talk List
 ## CMAP Data API 
-[![Broad Processing](screenshots/DataApi.png)](http://coreyflynn.github.io/SoapBox/DataAPI.png)
+[![Broad Processing](screenshots/DataAPI.png)](http://coreyflynn.github.io/SoapBox/DataAPI)
 
 [view on GitHub](https://github.com/coreyflynn/SoapBox/tree/gh-pages/DataAPI)
 

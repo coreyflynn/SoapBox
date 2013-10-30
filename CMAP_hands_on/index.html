@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Connectivity Map Data API and Apps</title>
+
+		<meta name="description" content="Connectivity Map Data API and Apps Presentation">
+		<meta name="author" content="Corey Flynn">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal/css/theme/serif.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Connectivity Map Data</h1>
+						<h1>APIs</h1>
+					</section>
+
+					<!-- who am I? -->
+					<section>
+						<h2> Corey Flynn</h2>
+				        <p><a href="mailto:cflynn@broadinstitute.org" style="width:1000; text-align:center"> cflynn@broadinstitute.org</a></p>
+				        <p> Bioinformatics Scientist II</p>
+				        <p> Connectivity Map,Golub Lab</p>
+				        <p> Cancer Program</p>
+					</section>
+				</section>
+
+				<!-- follow these slides -->
+				<section>
+					<p> follow these slides at </p>
+			        <a href="http://coreyflynn.github.io/SoapBox/DataAPI">http://coreyflynn.github.io/SoapBox/DataAPI</a>
+				</section>
+				
+				<!-- data matrix cartoon -->
+				<section>
+				        <img src="img/matrix.png" style="border:none; box-shadow: 0 0 0 0;">
+				</section>
+
+				<!-- Data API -->
+	            <section>
+	            	<!-- available apis -->
+	            	<section>
+	            		<h2><a href="http://api.lincscloud.org/a2/">Data API</a></h2>
+	            		<p>Programatic access to meta data on Connectivity Map experiments</p>
+	            		<ul>
+	            			<li><a href="http://api.lincscloud.org/a2/pertinfo">Perturbagens</a></li>
+	            			<li><a href="http://api.lincscloud.org/a2/siginfo">Signatures</a></li>
+	            			<li><a href="http://api.lincscloud.org/a2/geneinfo">Genes</a></li>
+	            			<li><a href="http://api.lincscloud.org/a2/cellinfo">Cell Lines</a></li>
+	            			<li><a href="http://api.lincscloud.org/a2/plateinfo">Experimental Plates</a></li>
+	            		</ul>
+	            	</section>
+					
+					<!-- parameters -->
+					<section>
+						<h2>API parameters</h2>
+						<ul>
+							<li><b><font color="red">q={query}:</font></b> Get signature annotations for the specified JSON query</li>
+							<li><b><font color="red">f={filters}:</font></b> Specify the fields to include or exclude in the result</li>
+							<li><b><font color="red">s={sort_order}:</font></b> Specify the order in which to sort each specified field (1:ascending; -1:descending)</li>
+							<li><b><font color="red">sk=num:</font></b> Specify the number of results to skip in the result set</li>
+							<li><b><font color="red">l=num:</font></b> Specify the limit for the number of results (default is 10)</li>
+							<li><b><font color="red">c=bool:</font></b> Return the result count for the query</li>
+						</ul>
+					</section>
+					
+					<!-- examples -->
+	            	<section>
+	            		<h2>Is <b><font color="red">X</font></b> in the Connectivity Map database?</h2>
+			            <a href="http://api.lincscloud.org/a2/siginfo?q={%22pert_iname%22:%22erlotinib%22}">api.lincscloud.org/a2/siginfo?q={"pert_iname":"erlotinib"}</a>
+	            	</section>
+	            	<section>
+		            	<h2>How many cell lines has the knockdown or over expression of <b><font color="red">X</font></b> been profiled in?</h2>
+		            	<a href="http://api.lincscloud.org/a2/siginfo?q={%22pert_iname%22:%22PDHA1%22}&g=cell_id">http://api.lincscloud.org/a2/siginfo?q={"pert_iname":"PDHA1"}&g=cell_id</a>
+		            </section>
+		            <section>
+		            	<h2>How many chemicals have been profiled in cell line <b><font color="red">X</font></b>? genetic reagents?</h2>
+		            	<a href="http://api.lincscloud.org/a2/siginfo?q={%22cell_id%22:%22MCF7%22,%22pert_type%22:%22trt_cp%22}&c=1">api.lincscloud.org/a2/siginfo?q={"cell_id":"MCF7","pert_type":"trt_cp"}&c=1</a>
+		            </section>
+		            <section>
+		            	<h2>How many <b><font color="red">MYC</font></b> reagents do we have?</h2>
+		            	<p><a href="http://api.lincscloud.org/a2/pertinfo?q={%22pert_iname%22:%22MYC%22}&c=1">api.lincscloud.org/a2/pertinfo?q={"pert_iname":"MYC"}&c=1</a></p>
+		            </section>
+	            </section>
+
+	            <!-- programatic access -->
+	            <section>
+	            	<section>
+	            		<h2>Example Code Snippets</h2>
+	            		<p>programatic access in your native language</p>
+	            	</section>
+	            	<section>
+	            		<h2>Python</h2>
+	            		<pre><code data-trim contenteditable>
+import cmap.util.mongo_utils as mu
+CM = mu.CMapMongo()
+sigs = CM.find({'pert_desc':'sirolimus'})
+					</code></pre>
+	            	</section>
+	            	<section>
+	            		<h2>Matlab</h2>
+	            		<pre><code data-trim contenteditable>
+sigs = mongo_info('sig_info','{pert_desc:"sirolimus"}')
+					</code></pre>
+	            	</section>
+	            	<section>
+	            		<h2>Command line using <b>wget</b></h2>
+	            		<pre><code data-trim contenteditable>
+wget 'api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}'
+					</code></pre>
+	            	</section>
+	            	<section>
+	            		<h2>In the works</h2>
+	            		<ul>
+	            			<li>R</li>
+	            			<li>Java</li>
+	            			<li>Javascript</li>
+	            			<li>Others?</li>
+	            		</ul>
+	            	</section>
+	            </section>
+
+				<!-- Data Synopsis-->
+				<section>
+					<!-- top level apps page -->
+					<section>
+						<h2><a href="http://apps.lincscloud.org">Apps</a></h2>
+						
+						<p>All Apps: <a href="http://apps.lincscloud.org">apps.lincscloud.org</a></p>
+						<p>Data synopsis: <a href="http://apps.lincscloud.org/data_synopsis">apps.lincscloud.org/data_synopsis</a></p>
+					</section>
+					
+					<!-- examples -->
+					<section>
+						<h2>Is <b><font color="red">X</font></b> in the Connectivity Map database?</h2>
+			            <a href="http://apps.lincscloud.org/data_synopsis">apps.lincscloud.org/data_synopsis</a>
+		            </section>
+		            <section>
+		            	<h2>How many cell lines has the knockdown or over expression of <b><font color="red">X</font></b> been profiled in?</h2>
+		            	<a href="http://apps.lincscloud.org/data_synopsis/#erlotinib">apps.lincscloud.org/data_synopsis#erlotinib</a>
+		            </section>
+		            <section>
+		            	<h2>How many chemicals have been profiled in cell line <b><font color="red">X</font></b>? genetic reagents?</h2>
+		            	<a href="http://apps.lincscloud.org/data_synopsis/#MCF7">apps.lincscloud.org/data_synopsis</a>
+		            </section>
+		            <section>
+		            	<h2>How many <b><font color="red">MYC</font></b> reagents do we have?<sup>*</sup></h2>
+		            	<p><a href="http://apps.lincscloud.org/data_synopsis/#^MYC$">apps.lincscloud.org/data_synopsis/#^MYC$</a></p>
+		            	<span><small><sup>*</sup> use <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a></small></span>
+		            </section>
+
+		            <!-- we're still in beta -->
+		            <section>
+		            	<h2>Apps are still in beta</h2>
+		            	<p>The data synopsis app is the most mature</p>
+		            	<p>For those looking for bleeding edge experiments and mockups check out <a href="http://apps.lincscloud.org/sandbox/">our sandbox apps</a></p>
+		            </section>
+		            <section>
+		            	<p>If things are broken, <a href="mailto:cflynn@broadinstitute.org"> send me an e-mail</a></p>
+		            	<img src="img/betaTesting.jpg">
+		            </section>
+	            </section>
+			</div>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -36,10 +36,13 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				<!-- preliminaries -->
 				<section>
+					<!-- title -->
 					<section>
-						<h1>Connectivity Map Data</h1>
-						<h1>APIs</h1>
+						<h1>Connectivity Map Data and Tools</h1>
+						<div style="min-height:100px"></div>
+						<h1><font color="red">Hands On</font></h1>
 					</section>
 
 					<!-- who am I? -->
@@ -55,138 +58,108 @@
 				<!-- follow these slides -->
 				<section>
 					<p> follow these slides at </p>
-			        <a href="http://coreyflynn.github.io/SoapBox/DataAPI">http://coreyflynn.github.io/SoapBox/DataAPI</a>
+			        <a href="http://coreyflynn.github.io/SoapBox/CMAP_hands_on">http://coreyflynn.github.io/SoapBox/CMAP_hands_on</a>
 				</section>
 				
-				<!-- data matrix cartoon -->
+				<!-- LINCS Overview -->
 				<section>
-				        <img src="img/matrix.png" style="border:none; box-shadow: 0 0 0 0;">
+					<section>
+						<h2>LINCS and CMap Overview</h2>
+					</section>
+
+					<!-- LINCS Data Cube -->
+					<section>
+						<h2>LINCS Data Concept</h2>
+				        <img src="img/LINCSCube.png" style="border:none; box-shadow: 0 0 0 0;">
+				        <ul>
+							<li>perturbations scalable to genome</li>
+							<li>high information content read-outs  (e.g. gene expression)</li>
+							<li>inexpensive</li>
+							<li>mechanism to query database</li>
+				        </ul>
+					</section>
+
+					<!-- LINCS Goals -->
+					<section>
+						<h2>GOAL: A look-up table for functional annoation</h2>
+						<div style="min-height:50px"></div>
+						<ol>
+							<li style="color:red;">Given a gene or protein
+								<ul style="color:black;">
+									<li>What other proteins have similar cellular effects?</li>
+									<li>What compounds impinge upon its activity?</li>
+								</ul>
+							</li>
+							<div style="min-height:50px"></div>
+							<li style="color:red;">Given a small molecule compound
+								<ul style="color:black;">
+									<li>What is its mechanism of action?</li>
+									<li>What are all of its effects on cells?</li>
+									<li>Is it unique?</li>
+								</ul>
+							</li>
+							<div style="min-height:50px"></div>
+							<li style="color:red;">Given a biological state
+								<ul style="color:black;">
+									<li>What protein activities relate to that state?</li>
+									<li>What compound activities relate to that state?</li>
+								</ul>
+							</li>
+						</ol>
+					</section>
+
+					<!-- implications of LINCS Goals -->
+					<section>
+						<h2>GOAL: A look-up table for functional annoation</h2>
+						<div style="min-height:50px"></div>
+						<h3 style="color:red">Implications of Goals</h3>
+						<ol>
+							<li>Users should be able to query with user-generated signatures</li>
+							<li>Readouts of cellular state should be sufficiently rich</li>
+							<li>Approach should be general and scalable
+								<ul>
+									<li>not optimized to a particular question</li>
+									<li>can approach genome scale</li>
+								</ul>
+							</li>
+						</ol>
+					</section>
+
+					<!-- expirimental flow -->
+					<section>
+						<img src="img/experimental_flow@2x.png" alt="" style="border:none; box-shadow: 0 0 0 0;">
+					</section>
+
+					<!-- L1000 comparison matrix -->
+					<section>
+						<h2>L1000 expression profiling</h2>
+						<img src="img/L100_comparison_matrix.png" alt="" style="border:none; box-shadow: 0 0 0 0;">
+					</section>
+
+					<!-- current LINCS Dataset -->
+					<section>
+						<h2>Current LINCS CMap Dataset</h2>
+						<iframe src="http://apps.lincscloud.org/data_synopsis/" frameborder="0" width="1000" height="520" seamless></iframe>
+					</section>
 				</section>
 
-				<!-- Data API -->
-	            <section>
-	            	<!-- available apis -->
-	            	<section>
-	            		<h2><a href="http://api.lincscloud.org/a2/">Data API</a></h2>
-	            		<p>Programatic access to meta data on Connectivity Map experiments</p>
-	            		<ul>
-	            			<li><a href="http://api.lincscloud.org/a2/pertinfo">Perturbagens</a></li>
-	            			<li><a href="http://api.lincscloud.org/a2/siginfo">Signatures</a></li>
-	            			<li><a href="http://api.lincscloud.org/a2/geneinfo">Genes</a></li>
-	            			<li><a href="http://api.lincscloud.org/a2/cellinfo">Cell Lines</a></li>
-	            			<li><a href="http://api.lincscloud.org/a2/plateinfo">Experimental Plates</a></li>
-	            		</ul>
-	            	</section>
-					
-					<!-- parameters -->
-					<section>
-						<h2>API parameters</h2>
-						<ul>
-							<li><b><font color="red">q={query}:</font></b> Get signature annotations for the specified JSON query</li>
-							<li><b><font color="red">f={filters}:</font></b> Specify the fields to include or exclude in the result</li>
-							<li><b><font color="red">s={sort_order}:</font></b> Specify the order in which to sort each specified field (1:ascending; -1:descending)</li>
-							<li><b><font color="red">sk=num:</font></b> Specify the number of results to skip in the result set</li>
-							<li><b><font color="red">l=num:</font></b> Specify the limit for the number of results (default is 10)</li>
-							<li><b><font color="red">c=bool:</font></b> Return the result count for the query</li>
-						</ul>
-					</section>
-					
-					<!-- examples -->
-	            	<section>
-	            		<h2>Is <b><font color="red">X</font></b> in the Connectivity Map database?</h2>
-			            <a href="http://api.lincscloud.org/a2/siginfo?q={%22pert_iname%22:%22erlotinib%22}">api.lincscloud.org/a2/siginfo?q={"pert_iname":"erlotinib"}</a>
-	            	</section>
-	            	<section>
-		            	<h2>How many cell lines has the knockdown or over expression of <b><font color="red">X</font></b> been profiled in?</h2>
-		            	<a href="http://api.lincscloud.org/a2/siginfo?q={%22pert_iname%22:%22PDHA1%22}&g=cell_id">http://api.lincscloud.org/a2/siginfo?q={"pert_iname":"PDHA1"}&g=cell_id</a>
-		            </section>
-		            <section>
-		            	<h2>How many chemicals have been profiled in cell line <b><font color="red">X</font></b>? genetic reagents?</h2>
-		            	<a href="http://api.lincscloud.org/a2/siginfo?q={%22cell_id%22:%22MCF7%22,%22pert_type%22:%22trt_cp%22}&c=1">api.lincscloud.org/a2/siginfo?q={"cell_id":"MCF7","pert_type":"trt_cp"}&c=1</a>
-		            </section>
-		            <section>
-		            	<h2>How many <b><font color="red">MYC</font></b> reagents do we have?</h2>
-		            	<p><a href="http://api.lincscloud.org/a2/pertinfo?q={%22pert_iname%22:%22MYC%22}&c=1">api.lincscloud.org/a2/pertinfo?q={"pert_iname":"MYC"}&c=1</a></p>
-		            </section>
-	            </section>
-
-	            <!-- programatic access -->
-	            <section>
-	            	<section>
-	            		<h2>Example Code Snippets</h2>
-	            		<p>programatic access in your native language</p>
-	            	</section>
-	            	<section>
-	            		<h2>Python</h2>
-	            		<pre><code data-trim contenteditable>
-import cmap.util.mongo_utils as mu
-CM = mu.CMapMongo()
-sigs = CM.find({'pert_desc':'sirolimus'})
-					</code></pre>
-	            	</section>
-	            	<section>
-	            		<h2>Matlab</h2>
-	            		<pre><code data-trim contenteditable>
-sigs = mongo_info('sig_info','{pert_desc:"sirolimus"}')
-					</code></pre>
-	            	</section>
-	            	<section>
-	            		<h2>Command line using <b>wget</b></h2>
-	            		<pre><code data-trim contenteditable>
-wget 'api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}'
-					</code></pre>
-	            	</section>
-	            	<section>
-	            		<h2>In the works</h2>
-	            		<ul>
-	            			<li>R</li>
-	            			<li>Java</li>
-	            			<li>Javascript</li>
-	            			<li>Others?</li>
-	            		</ul>
-	            	</section>
-	            </section>
-
-				<!-- Data Synopsis-->
+				<!-- Data Normalization -->
 				<section>
-					<!-- top level apps page -->
-					<section>
-						<h2><a href="http://apps.lincscloud.org">Apps</a></h2>
-						
-						<p>All Apps: <a href="http://apps.lincscloud.org">apps.lincscloud.org</a></p>
-						<p>Data synopsis: <a href="http://apps.lincscloud.org/data_synopsis">apps.lincscloud.org/data_synopsis</a></p>
-					</section>
-					
-					<!-- examples -->
-					<section>
-						<h2>Is <b><font color="red">X</font></b> in the Connectivity Map database?</h2>
-			            <a href="http://apps.lincscloud.org/data_synopsis">apps.lincscloud.org/data_synopsis</a>
-		            </section>
-		            <section>
-		            	<h2>How many cell lines has the knockdown or over expression of <b><font color="red">X</font></b> been profiled in?</h2>
-		            	<a href="http://apps.lincscloud.org/data_synopsis/#erlotinib">apps.lincscloud.org/data_synopsis#erlotinib</a>
-		            </section>
-		            <section>
-		            	<h2>How many chemicals have been profiled in cell line <b><font color="red">X</font></b>? genetic reagents?</h2>
-		            	<a href="http://apps.lincscloud.org/data_synopsis/#MCF7">apps.lincscloud.org/data_synopsis</a>
-		            </section>
-		            <section>
-		            	<h2>How many <b><font color="red">MYC</font></b> reagents do we have?<sup>*</sup></h2>
-		            	<p><a href="http://apps.lincscloud.org/data_synopsis/#^MYC$">apps.lincscloud.org/data_synopsis/#^MYC$</a></p>
-		            	<span><small><sup>*</sup> use <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a></small></span>
-		            </section>
+					<h2>Data Normalization</h2>
+				</section>
 
-		            <!-- we're still in beta -->
-		            <section>
-		            	<h2>Apps are still in beta</h2>
-		            	<p>The data synopsis app is the most mature</p>
-		            	<p>For those looking for bleeding edge experiments and mockups check out <a href="http://apps.lincscloud.org/sandbox/">our sandbox apps</a></p>
-		            </section>
-		            <section>
-		            	<p>If things are broken, <a href="mailto:cflynn@broadinstitute.org"> send me an e-mail</a></p>
-		            	<img src="img/betaTesting.jpg">
-		            </section>
-	            </section>
+				<!-- Data Analysis Vignettes -->
+				<section>
+					<h2>Data Analysis Vignettes</h2>
+				</section>
+
+				<!-- Data Analysis Vignettes -->
+				<section>
+					<h2>Data Analysis Vignettes Redux</h2>
+					<div class="cmap-spacer-medium"></div>
+					<h3>Tools Focus</h3>
+				</section>
+
 			</div>
 
 		</div>

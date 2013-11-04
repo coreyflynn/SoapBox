@@ -145,7 +145,90 @@
 
 				<!-- Data Normalization -->
 				<section>
-					<h2>Data Normalization</h2>
+					<section>
+						<h2>Data Collection and Normalization</h2>
+					</section>
+
+					<!-- data collection overview -->
+					<section>
+						<h2>Overview</h2>
+						<div style="min-height:50px"></div>
+						<ul>
+							<li>
+								The Connectivity Map generates data in a flow cytometer based gene expression assay called <font color="red">L1000</font>
+							</li>
+							<div style="min-height:50px"></div>
+							<li>
+								We detect the expression of 1000 <font color="red">landmark</font> transcripts and use them to <font color="red">impute</font> the expression of the rest of the genome
+							</li>
+							<div style="min-height:50px"></div>
+							<li>
+								We normalize data using invariant gene set expression levels and quantile normalization and then compute differential expression z-scores. We call this process <font color="red">Roast</font>
+							</li>
+							<div style="min-height:50px"></div>
+							<li>
+								We collapse replicate data into single signatures using a weighted average.  We call this process <font color="red">Brew</font>
+							</li>
+						</ul>
+					</section>
+
+					<!-- raw data -->
+					<section>
+						<h2>Raw Data</h2>
+						<p>each line is a median of an invariant gene set</p>
+						<img src="img/RAW.png" alt="" style="border:none; box-shadow: 0 0 0 0;">
+					</section>
+
+					<!-- invariant set normalized data -->
+					<section>
+						<h2>Invariant Set Normalized Data</h2>
+						<p>Data rescaled to an invriant gene set reference curve (based on GEO data) using non-linear regression</p>
+						<img src="img/NORM.png" alt="" style="border:none; box-shadow: 0 0 0 0;">
+					</section>
+
+					<!-- quantile normalized data -->
+					<section>
+						<h2>Quantile Normalized Data</h2>
+						<p>Equalized distributions of values in each profile across the plate using quantile normalization</p>
+						<img src="img/QNORM.png" alt="" style="border:none; box-shadow: 0 0 0 0;">
+					</section>
+
+					<!-- roast outputs -->
+					<section>
+						<h2>Roast Output</h2>
+						<ul>
+							<li><font color="red">GEX:</font> Unnormalized data </li>
+							<li><font color="red">NORM:</font> Invariant set normalized data </li>
+							<li><font color="red">QNORM:</font> Quantile normalized data </li>
+							<li><font color="red">ZS:</font> Z-scored data </li>
+						</ul>
+					</section>
+
+					<!-- brew -->
+					<section>
+						<h2>Combining Replicates (Brew)</h2>
+						<div style="min-height:50px"></div>
+						<p>experimental replicates are collapsed into a single signature using a moderated z-scoring procedure</p>
+						<div style="min-height:50px"></div>
+						<img src="img/modz.png" alt="" style="border:none; box-shadow: 0 0 0 0;">
+						<ul> <font color="red">Supports Grouping By</font>
+							<li>Plate well</li>
+							<li>Perturbagen</li>
+							<li>Other</li>
+						</ul>
+
+					</section>
+
+					<!-- brew outputs -->
+					<section>
+						<h2>Brew Output</h2>
+						<ul>
+							<li><font color="red">COMPZ*_SCORE:</font> Composite Z-score data </li>
+							<li><font color="red">SIG*_{UP,DN}:</font> Top and bottom most differentially expressed genes</li>
+						</ul>
+					</section>
+
+
 				</section>
 
 				<!-- Data Analysis Vignettes -->

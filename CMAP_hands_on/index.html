@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="../reveal/css/reveal.min.css">
 		<link rel="stylesheet" href="../reveal/css/theme/serif.css" id="theme">
+		<link rel="stylesheet" href="http://cmap.github.io/barista/barista.main.min.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
@@ -145,11 +146,8 @@
 					<!-- Magnitude of LINCS -->
 					<section>
 						<h2>LINCS Expansion</h2>
-						<ul>
-							<li>Pilot:<span style="color:red"> 560 experiments</span></li>
-							<li>Pilot Extension:<span style="color:red"> 7,200 experiments</span></li>
-							<li>LINCS:<span style="color:red"> 1,328,098 experiments</span></li>
-						</ul>
+						<div class="cmap-spacer-large"></div>
+						<div id="LINCS_bar_target"></div>
 					</section>
 
 					<!-- current LINCS Dataset -->
@@ -312,6 +310,7 @@
 
 		<script src="../reveal/lib/js/head.min.js"></script>
 		<script src="../reveal/js/reveal.min.js"></script>
+		<script src="http://cmap.github.io/barista/barista.main.min.js"></script>
 
 		<script>
 
@@ -336,6 +335,39 @@
 					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+
+		</script>
+		<script type="text/javascript">
+			// data model
+			bar_model = new Barista.Models.BarPlotModel({data: [520,7200],
+														 title: 'Number of profiles'});
+
+			// view
+			bar_view = new Barista.Views.BarPlotView({el: $('#LINCS_bar_target'),
+													  model: bar_model,
+													  plot_height:300,
+													  min_lock: 0,
+													  margin: 60,
+													  fg_color: "red",
+													});
+			$('#LINCS_bar_target').click(function(){
+				if (bar_model.get('data').length == 1){
+					bar_model.set({data: [520,7200]});
+					bar_model.set({data_labels: ['Pilot','Pilot Extension']});
+					return
+				}
+				if (bar_model.get('data').length == 2){
+					bar_model.set({data: [520, 7200,1328098]});
+					bar_model.set({data_labels: ['Pilot','Pilot Extension','LINCS']});
+					return
+				}else{
+					bar_model.set({data: [520]});
+					bar_model.set({data_labels: ['Pilot']});
+					return
+				}
+			});
+			bar_model.set({data: [520]});
+			bar_model.set({data_labels: ['Pilot']});
 
 		</script>
 

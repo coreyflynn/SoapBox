@@ -20,6 +20,9 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
 
+		<!-- For fullscreen images -->
+		<link rel="stylesheet" type="text/css" href="../reveal/lib/css/fullscreen-img.css">
+
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
 			document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -214,7 +217,8 @@ wget 'api.lincscloud.org/a2/siginfo?q={"pert_desc":"sirolimus"}'
 					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/lib/js/fullscreen-img.js' }
 				]
 			});
 
